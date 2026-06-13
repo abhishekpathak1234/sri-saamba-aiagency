@@ -66,6 +66,39 @@ const industries = [
   },
 ];
 
+const cardVariants = {
+  default: {
+    y: 0,
+    backgroundColor: "rgba(255,255,255,0.025)",
+    borderColor: "rgba(255,255,255,0.07)",
+    boxShadow: "0 0 0px rgba(107,56,196,0)",
+  },
+  hovered: {
+    y: -6,
+    backgroundColor: "rgba(107,56,196,0.07)",
+    borderColor: "rgba(139,92,246,0.45)",
+    boxShadow: "0 16px 48px rgba(107,56,196,0.18), 0 0 0 1px rgba(139,92,246,0.2)",
+    transition: { duration: 0.22 },
+  },
+};
+
+const iconVariants = {
+  default: {
+    backgroundColor: "rgba(107,56,196,0.22)",
+    borderColor: "rgba(139,92,246,0.2)",
+  },
+  hovered: {
+    backgroundColor: "rgba(107,56,196,0.92)",
+    borderColor: "rgba(139,92,246,0.7)",
+    transition: { duration: 0.22 },
+  },
+};
+
+const tagVariants = {
+  default: { borderColor: "rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.38)" },
+  hovered: { borderColor: "rgba(139,92,246,0.35)", color: "rgba(255,255,255,0.65)", transition: { duration: 0.22 } },
+};
+
 export default function IndustriesSection() {
   return (
     <section id="industries" className="py-20 lg:py-28 bg-[#080b12]">
@@ -97,29 +130,33 @@ export default function IndustriesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.07 }}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="group p-6 rounded-2xl border border-white/6 bg-white/3 hover:border-purple-500/20 transition-all duration-300"
-              style={{ backdropFilter: "blur(8px)", background: "linear-gradient(135deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01))" }}
+              whileHover="hovered"
+              animate="default"
+              variants={cardVariants}
+              className="p-6 rounded-2xl border cursor-default"
+              style={{ backdropFilter: "blur(10px)" }}
             >
-              <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 text-white"
-                style={{
-                  background: "linear-gradient(135deg, rgba(107,56,196,0.4) 0%, rgba(26,79,187,0.4) 100%)",
-                  border: "1px solid rgba(139,92,246,0.25)",
-                }}
+              {/* Icon */}
+              <motion.div
+                variants={iconVariants}
+                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 text-white border"
               >
                 {ind.icon}
-              </div>
+              </motion.div>
+
               <h3 className="text-white font-semibold text-lg mb-2">{ind.name}</h3>
               <p className="text-white/35 text-sm leading-relaxed mb-4">{ind.description}</p>
+
+              {/* Tags */}
               <div className="flex flex-wrap gap-1.5">
                 {ind.tags.map((tag) => (
-                  <span
+                  <motion.span
                     key={tag}
-                    className="px-2.5 py-1 rounded-full text-[10px] font-medium text-white/40 border border-white/8 bg-white/4"
+                    variants={tagVariants}
+                    className="px-2.5 py-1 rounded-full text-[10px] font-medium border bg-white/3"
                   >
                     {tag}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </motion.div>

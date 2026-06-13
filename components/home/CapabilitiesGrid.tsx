@@ -85,6 +85,49 @@ const capabilities = [
   },
 ];
 
+const cardVariants = {
+  default: {
+    y: 0,
+    borderColor: "rgba(255,255,255,0.07)",
+    boxShadow: "0 0 0px rgba(99,102,241,0)",
+  },
+  hovered: {
+    y: -6,
+    borderColor: "rgba(99,102,241,0.5)",
+    boxShadow: "0 16px 40px rgba(99,102,241,0.16), 0 0 0 1px rgba(99,102,241,0.18)",
+    transition: { duration: 0.2 },
+  },
+};
+
+const iconVariants = {
+  default: {
+    backgroundColor: "rgba(255,255,255,0.06)",
+    borderColor: "rgba(255,255,255,0.08)",
+    color: "rgba(255,255,255,0.55)",
+  },
+  hovered: {
+    backgroundColor: "rgba(79,70,229,0.9)",
+    borderColor: "rgba(99,102,241,0.6)",
+    color: "rgba(255,255,255,1)",
+    transition: { duration: 0.2 },
+  },
+};
+
+/* highlighted card (Email & Follow-Up) keeps its own styling */
+const highlightIconVariants = {
+  default: {
+    backgroundColor: "rgba(139,92,246,0.35)",
+    borderColor: "rgba(139,92,246,0.4)",
+    color: "rgba(255,255,255,0.8)",
+  },
+  hovered: {
+    backgroundColor: "rgba(107,56,196,0.95)",
+    borderColor: "rgba(139,92,246,0.7)",
+    color: "rgba(255,255,255,1)",
+    transition: { duration: 0.2 },
+  },
+};
+
 export default function CapabilitiesGrid() {
   return (
     <section className="py-20 lg:py-28 bg-[#080b12]">
@@ -116,18 +159,22 @@ export default function CapabilitiesGrid() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.05 }}
-              whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className={`relative p-6 rounded-2xl border transition-all duration-300 cursor-default group ${
+              whileHover="hovered"
+              animate="default"
+              variants={cardVariants}
+              className={`relative p-6 rounded-2xl border cursor-default ${
                 cap.highlight
-                  ? "border-purple-500/30 bg-gradient-to-br from-purple-500/15 to-blue-500/10"
-                  : "border-white/6 bg-white/3 hover:border-purple-500/20 hover:bg-white/5"
+                  ? "bg-gradient-to-br from-purple-500/15 to-blue-500/10"
+                  : "bg-white/3"
               }`}
               style={{ backdropFilter: "blur(8px)" }}
             >
-              <div className="w-10 h-10 rounded-xl bg-white/8 group-hover:bg-white/12 flex items-center justify-center text-white/60 group-hover:text-white/80 mb-5 transition-all duration-300"
-                style={{ border: "1px solid rgba(255,255,255,0.08)" }}>
+              <motion.div
+                variants={cap.highlight ? highlightIconVariants : iconVariants}
+                className="w-10 h-10 rounded-xl flex items-center justify-center mb-5 border"
+              >
                 {cap.icon}
-              </div>
+              </motion.div>
               <h3 className="text-white font-semibold text-sm mb-2 leading-snug">{cap.title}</h3>
               <p className="text-white/35 text-xs leading-relaxed">{cap.description}</p>
             </motion.div>
