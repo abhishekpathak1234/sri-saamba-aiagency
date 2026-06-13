@@ -4,15 +4,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, Zap } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
-  { href: "/case-studies", label: "Case Studies" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "/services", label: "Solutions" },
+  { href: "/services#capabilities", label: "Capabilities" },
+  { href: "/case-studies", label: "Product" },
+  { href: "/about#industries", label: "Industries" },
 ];
 
 export default function Navbar() {
@@ -28,22 +26,22 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-background/95 backdrop-blur-md border-b border-border shadow-lg shadow-black/20"
+          ? "bg-[#0a0d14]/95 backdrop-blur-xl border-b border-white/5"
           : "bg-transparent"
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between h-16 lg:h-[72px]">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/20 border border-primary/30 group-hover:bg-primary/30 transition-colors">
-              <Zap className="w-4 h-4 text-primary" />
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <div className="relative w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
+              <Zap className="w-4.5 h-4.5 text-white" fill="white" />
             </div>
-            <span className="text-lg font-bold tracking-tight">
-              <span className="text-foreground">Sri Saamba</span>
-              <span className="text-primary"> AI</span>
+            <span className="text-base font-semibold tracking-tight">
+              <span className="text-white">Sri Saamba</span>
+              <span className="text-blue-400"> AI</span>
             </span>
           </Link>
 
@@ -53,10 +51,10 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
                   pathname === link.href
-                    ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+                    ? "text-white"
+                    : "text-white/60 hover:text-white"
                 }`}
               >
                 {link.label}
@@ -65,75 +63,57 @@ export default function Navbar() {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-3">
-            <Button
-              asChild
-              size="sm"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-5"
+          <div className="hidden lg:flex items-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-5 py-2 rounded-full text-white text-sm font-semibold transition-all duration-300 hover:opacity-90 hover:scale-[1.02]"
+              style={{
+                background: "linear-gradient(135deg, #7c3aed 0%, #4f46e5 50%, #2563eb 100%)",
+                boxShadow: "0 0 20px rgba(99,102,241,0.3)",
+              }}
             >
-              <Link href="/contact">Get Started</Link>
-            </Button>
+              Book Free Consultation
+            </Link>
           </div>
 
-          {/* Mobile Menu */}
+          {/* Mobile */}
           <Sheet open={open} onOpenChange={setOpen}>
-            {/* Use SheetTrigger as a plain button — no Button wrapper to avoid nesting */}
             <SheetTrigger
-              className="lg:hidden inline-flex items-center justify-center w-9 h-9 rounded-md text-foreground hover:bg-white/10 transition-colors"
-              aria-label="Open navigation menu"
+              className="lg:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+              aria-label="Open menu"
             >
               <Menu className="w-5 h-5" />
             </SheetTrigger>
-
-            <SheetContent
-              side="right"
-              className="w-[300px] bg-card border-border p-0"
-            >
-              {/* Logo row */}
-              <div className="flex items-center px-5 pt-5 pb-4 border-b border-border">
-                <Link
-                  href="/"
-                  className="flex items-center gap-2"
-                  onClick={() => setOpen(false)}
-                >
-                  <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/20 border border-primary/30">
-                    <Zap className="w-4 h-4 text-primary" />
+            <SheetContent side="right" className="w-[280px] bg-[#0d1117] border-white/10 p-0">
+              <div className="flex items-center px-5 pt-5 pb-4 border-b border-white/10">
+                <Link href="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-blue-600 flex items-center justify-center">
+                    <Zap className="w-4 h-4 text-white" fill="white" />
                   </div>
-                  <span className="text-lg font-bold">
-                    <span>Sri Saamba</span>
-                    <span className="text-primary"> AI</span>
-                  </span>
+                  <span className="text-sm font-semibold text-white">Sri Saamba <span className="text-blue-400">AI</span></span>
                 </Link>
               </div>
-
-              {/* Nav links */}
               <nav className="flex flex-col gap-1 p-4">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className={`px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
-                      pathname === link.href
-                        ? "text-primary bg-primary/10"
-                        : "text-muted-foreground hover:text-foreground hover:bg-white/5"
-                    }`}
+                    className="px-4 py-3 text-sm font-medium text-white/60 hover:text-white rounded-lg hover:bg-white/5 transition-colors"
                   >
                     {link.label}
                   </Link>
                 ))}
               </nav>
-
-              {/* CTA */}
               <div className="px-4 pb-6">
-                <Button
-                  asChild
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
+                <Link
+                  href="/contact"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center justify-center w-full py-2.5 rounded-full text-white text-sm font-semibold transition-all"
+                  style={{ background: "linear-gradient(135deg, #7c3aed 0%, #4f46e5 50%, #2563eb 100%)" }}
                 >
-                  <Link href="/contact" onClick={() => setOpen(false)}>
-                    Get Started Free
-                  </Link>
-                </Button>
+                  Book Free Consultation
+                </Link>
               </div>
             </SheetContent>
           </Sheet>

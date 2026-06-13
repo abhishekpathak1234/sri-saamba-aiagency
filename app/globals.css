@@ -4,6 +4,41 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ── Sri Saamba Brand Design Tokens ── */
+@theme {
+  /* Brand palette */
+  --color-samba-purple: #6B38C4;
+  --color-samba-blue: #1A4FBB;
+  --color-samba-cyan: #00F0FF;
+  --color-deep-space: #030303;
+
+  /* Surface colors */
+  --color-card-bg: rgba(255, 255, 255, 0.03);
+  --color-card-border: rgba(255, 255, 255, 0.08);
+
+  /* Brand gradient strings (used via var() in style props) */
+  --gradient-brand: linear-gradient(135deg, #6B38C4 0%, #1A4FBB 50%, #00F0FF 100%);
+  --gradient-hero: linear-gradient(90deg, #8b5cf6 0%, #6366f1 25%, #3b82f6 50%, #06b6d4 70%, #f97316 95%);
+  --gradient-cta: linear-gradient(135deg, #7c3aed 0%, #4f46e5 40%, #2563eb 100%);
+
+  /* Aurora / glow backgrounds */
+  --background-image-aurora-glow: radial-gradient(circle at 50% -20%, rgba(107,56,196,0.15) 0%, rgba(26,79,187,0.08) 45%, transparent 100%);
+  --background-image-hero-glow: radial-gradient(circle at center, rgba(107,56,196,0.12) 0%, rgba(26,79,187,0.08) 35%, transparent 70%);
+
+  /* Shadows */
+  --shadow-glow: 0 0 60px rgba(107, 56, 196, 0.18);
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-cta-btn: 0 0 30px rgba(99, 102, 241, 0.35);
+
+  /* Radii */
+  --radius-card: 1.5rem;
+  --radius-pill: 9999px;
+
+  /* Font weights */
+  --font-weight-hero: 800;
+  --font-weight-heading: 700;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
