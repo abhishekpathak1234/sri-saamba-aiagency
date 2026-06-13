@@ -221,7 +221,7 @@ export default function AboutPage() {
           </p>
           <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 h-12">
             <Link href="/contact" className="flex items-center gap-2">
-              Book a Discovery Call <ArrowRight className="w-4 h-4" />
+              Book Free Consultation <ArrowRight className="w-4 h-4" />
             </Link>
           </Button>
         </div>

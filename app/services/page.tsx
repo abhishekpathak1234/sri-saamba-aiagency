@@ -189,7 +189,7 @@ export default function ServicesPage() {
           </p>
           <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 h-12">
             <Link href="/contact" className="flex items-center gap-2">
-              Get a Custom Quote <ArrowRight className="w-4 h-4" />
+              Book Free Consultation <ArrowRight className="w-4 h-4" />
             </Link>
           </Button>
         </div>
@@ -228,7 +228,7 @@ export default function ServicesPage() {
                     </p>
                     <Button asChild variant="outline" size="sm" className="border-primary/30 text-primary hover:bg-primary/10">
                       <Link href="/contact" className="flex items-center gap-2">
-                        Get Started <ArrowRight className="w-3.5 h-3.5" />
+                        Book Free Consultation <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
                     </Button>
                   </div>
@@ -277,7 +277,7 @@ export default function ServicesPage() {
           </p>
           <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 h-12">
             <Link href="/contact" className="flex items-center gap-2">
-              Book Free Discovery Call <ArrowRight className="w-4 h-4" />
+              Book Free Consultation <ArrowRight className="w-4 h-4" />
             </Link>
           </Button>
         </div>
