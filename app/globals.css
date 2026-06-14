@@ -232,3 +232,26 @@
   backdrop-filter: blur(12px);
   border: 1px solid oklch(1 0 0 / 8%);
 }
+
+/* ── CapabilitiesGrid interactive section ── */
+@keyframes bubbleIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+@keyframes timelineIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+@keyframes nodeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1);   }
+}
+
+.cap-chip { transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease; cursor: default; }
+.cap-chip:hover { background: rgba(255,92,26,0.10) !important; border-color: rgba(255,92,26,0.22) !important; color: #fff !important; }
+
+.cap-panel-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+@media (min-width: 1024px) { .cap-panel-grid { grid-template-columns: 1fr 1.4fr; gap: 40px; min-height: 480px; } }
+
+.cap-cta-banner { flex-direction: column; gap: 24px; text-align: center; }
+@media (min-width: 768px) { .cap-cta-banner { flex-direction: row; text-align: left; } }
