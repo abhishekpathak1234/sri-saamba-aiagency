@@ -1,11 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, TrendingUp } from "lucide-react";
+import { TrendingUp } from "lucide-react";
 
 const caseStudies = [
   {
@@ -71,9 +69,57 @@ const caseStudies = [
     bg: "bg-violet-500/10",
     badgeBg: "bg-violet-500/10 text-violet-400 border-violet-500/20",
   },
+  {
+    id: 4,
+    industry: "Roofing",
+    title: "Roofing Contractor Recovers 18 Missed Calls in First Week",
+    client: "Texas Roofing Contractor",
+    timeframe: "30 days",
+    challenge:
+      "A Texas roofing contractor was missing 60–70% of inbound calls during storm season. The crew was on roofs all day, calls went to voicemail, and leads were calling competitors instead.",
+    solution:
+      "We deployed an AI voice agent that answers every call within 3 rings, captures job details (address, damage type, urgency), and books inspection appointments directly into the owner's calendar — 24/7, including weekends.",
+    results: [
+      { metric: "18", label: "missed calls recovered in week 1" },
+      { metric: "$94K", label: "new inspection bookings in month 1" },
+      { metric: "22s", label: "avg response time (was 4+ hours)" },
+      { metric: "0", label: "leads lost to voicemail during storm surge" },
+    ],
+    tags: ["AI Voice Agent", "USA"],
+    color: "text-orange-400",
+    bg: "bg-orange-500/10",
+    badgeBg: "bg-orange-500/10 text-orange-400 border-orange-500/20",
+  },
+  {
+    id: 5,
+    industry: "Gyms & Fitness",
+    title: "Texas Gym Stops Losing $100K/Year to Missed Membership Calls",
+    client: "24-Hour Gym, Texas",
+    timeframe: "30 days",
+    challenge:
+      "A 24-hour gym in Texas had staff occupied with members during peak hours. Membership enquiry calls went unanswered. Each missed call was a potential $600–$1,200/year member lost forever.",
+    solution:
+      "AI receptionist answers every call 24/7, explains membership options, books free trial sessions automatically, and sends follow-up SMS to anyone who booked but didn't show up.",
+    results: [
+      { metric: "100%", label: "of inbound calls now answered" },
+      { metric: "34", label: "new trial bookings in first month" },
+      { metric: "$41K", label: "estimated annual revenue recovered" },
+      { metric: "40%", label: "drop in no-show rate with SMS reminders" },
+    ],
+    tags: ["AI Voice Agent", "USA"],
+    color: "text-green-400",
+    bg: "bg-green-500/10",
+    badgeBg: "bg-green-500/10 text-green-400 border-green-500/20",
+  },
 ];
 
-const filters = ["All", "E-commerce", "Healthcare", "B2B SaaS"];
+const filters = ["All", "E-commerce", "Healthcare", "B2B SaaS", "Roofing", "Gyms & Fitness"];
+
+function openCalendly() {
+  (window as any).Calendly?.initPopupWidget({
+    url: "https://calendly.com/business-srisaamba/30min",
+  });
+}
 
 export default function CaseStudiesPage() {
   const [activeFilter, setActiveFilter] = useState("All");
@@ -188,7 +234,9 @@ export default function CaseStudiesPage() {
                       {cs.results.map((r) => (
                         <div
                           key={r.label}
-                          className={`p-3 rounded-lg ${cs.bg} border ${cs.badgeBg.split(" ").find((c) => c.startsWith("border")) || "border-border"}`}
+                          className={`p-3 rounded-lg ${cs.bg} border ${
+                            cs.badgeBg.split(" ").find((c) => c.startsWith("border")) || "border-border"
+                          }`}
                         >
                           <div className={`text-xl font-bold ${cs.color} mb-0.5`}>
                             {r.metric}
@@ -218,11 +266,16 @@ export default function CaseStudiesPage() {
             Book a free discovery call and we&apos;ll map out how AI can
             generate measurable ROI for your specific business.
           </p>
-          <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 h-12">
-            <Link href="/contact" className="flex items-center gap-2">
-              Book Free Consultation <ArrowRight className="w-4 h-4" />
-            </Link>
-          </Button>
+          <button
+            onClick={openCalendly}
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-white text-sm transition-all duration-300 hover:opacity-90 hover:scale-[1.02]"
+            style={{
+              background: "linear-gradient(135deg, #FF5C1A 0%, #e04e16 100%)",
+              boxShadow: "0 0 30px rgba(255,92,26,0.3)",
+            }}
+          >
+            Book Free Demo
+          </button>
         </div>
       </section>
     </div>

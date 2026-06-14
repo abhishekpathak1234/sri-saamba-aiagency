@@ -1,4 +1,10 @@
-import { Mail, MapPin, Clock, Shield } from "lucide-react";
+import { MapPin, Clock, Shield } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact | Sri Saamba AI Agency",
+  description: "Book a free 30-minute strategy call with Sri Saamba AI. Pick a time that works for you.",
+};
 
 export default function ContactPage() {
   return (
@@ -21,7 +27,7 @@ export default function ContactPage() {
             Free 30-Min Strategy Call
           </span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-5 text-white">
-            Book Your Free{" "}
+            Book a Free{" "}
             <span
               className="bg-clip-text text-transparent"
               style={{
@@ -29,20 +35,33 @@ export default function ContactPage() {
                   "linear-gradient(90deg, #8b5cf6, #3b82f6, #06b6d4)",
               }}
             >
-              Consultation
+              30-Minute Strategy Call
             </span>
           </h1>
           <p className="text-white/45 text-lg leading-relaxed max-w-xl mx-auto">
-            Tell us about your business. We&apos;ll respond within 24 hours with
-            a tailored AI strategy built around your goals.
+            Pick a time that works for you. No sales pitch — just a real
+            conversation about what AI can do for your business.
           </p>
         </div>
       </section>
 
-      {/* Embedded Google Form */}
-      <section className="pb-20 px-4 sm:px-6 lg:px-8">
+      {/* Direct email row */}
+      <section className="pb-6 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto text-center" style={{ maxWidth: 800 }}>
+          <p className="text-white/40 text-sm mb-1">Prefer to email us directly?</p>
+          <a
+            href="mailto:business@srisaamba.com"
+            className="inline-flex items-center gap-2 text-base font-medium transition-colors hover:opacity-80"
+            style={{ color: "#FF5C1A" }}
+          >
+            ✉ business@srisaamba.com
+          </a>
+        </div>
+      </section>
+
+      {/* Calendly inline widget */}
+      <section className="pb-12 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto" style={{ maxWidth: 800 }}>
-          {/* Glassmorphism wrapper */}
           <div
             className="rounded-3xl overflow-hidden border border-white/10"
             style={{
@@ -53,7 +72,7 @@ export default function ContactPage() {
                 "0 0 80px rgba(99,102,241,0.12), 0 40px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06)",
             }}
           >
-            {/* Form header strip */}
+            {/* Header strip */}
             <div
               className="px-6 py-4 border-b border-white/6 flex items-center gap-3"
               style={{
@@ -84,20 +103,12 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Google Form iframe */}
-            <iframe
-              src="https://docs.google.com/forms/d/e/1FAIpQLSf8qiikxzAqLwi42HKvChSZ8buP0yIkgcuyqq-hrFC40xdEOQ/viewform?embedded=true"
-              width="100%"
-              height="1100"
-              frameBorder={0}
-              marginHeight={0}
-              marginWidth={0}
-              className="block w-full"
-              style={{ minHeight: 1100 }}
-              title="Sri Saamba AI — Free Consultation Form"
-            >
-              Loading…
-            </iframe>
+            {/* Calendly inline widget */}
+            <div
+              className="calendly-inline-widget"
+              data-url="https://calendly.com/business-srisaamba/30min"
+              style={{ minWidth: 320, height: 700 }}
+            />
           </div>
         </div>
       </section>
@@ -118,10 +129,10 @@ export default function ContactPage() {
                 sub: "Monday – Friday, 9 am – 6 pm.",
               },
               {
-                icon: Mail,
+                icon: null,
                 title: "Direct line",
-                sub: "hello@srisaamba.com",
-                href: "mailto:hello@srisaamba.com",
+                sub: "business@srisaamba.com",
+                href: "mailto:business@srisaamba.com",
               },
             ].map(({ icon: Icon, title, sub, href }) => (
               <div
@@ -141,7 +152,11 @@ export default function ContactPage() {
                     border: "1px solid rgba(139,92,246,0.2)",
                   }}
                 >
-                  <Icon className="w-4 h-4 text-purple-300" />
+                  {Icon ? (
+                    <Icon className="w-4 h-4 text-purple-300" />
+                  ) : (
+                    <span className="text-purple-300 text-sm">✉</span>
+                  )}
                 </div>
                 <div>
                   <div className="text-white/70 text-sm font-medium mb-0.5">
@@ -162,10 +177,9 @@ export default function ContactPage() {
             ))}
           </div>
 
-          {/* Location note */}
           <div className="flex items-center justify-center gap-2 mt-6 text-white/20 text-xs">
             <MapPin className="w-3.5 h-3.5" />
-            Remote-first · Serving clients globally
+            Remote-first · Serving USA, Australia, UAE &amp; India
           </div>
         </div>
       </section>

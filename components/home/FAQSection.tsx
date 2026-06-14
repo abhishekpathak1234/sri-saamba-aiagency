@@ -1,75 +1,153 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+"use client";
+
+import { useState } from "react";
 
 const faqs = [
   {
-    question: "How long does implementation take?",
+    question: "How quickly can you get me set up?",
     answer:
-      "Most projects go live within 7–14 business days. Simple chatbots or single-workflow automations can be ready in as few as 3–5 days. More complex multi-agent systems or deep CRM integrations typically take 3–4 weeks. We'll give you a precise timeline during your discovery call.",
+      "Most clients are live within 5–7 business days. We handle everything — setup, training, integration, and testing. You don't need to do anything technical.",
   },
   {
-    question: "Do I need technical knowledge to work with you?",
+    question: "What happens if the AI says something wrong?",
     answer:
-      "Not at all. Our process is designed to be completely hands-off for you. We handle all the technical work — building, training, integrating, and deploying your AI agents. Your job is simply to describe your goals and provide access to your tools. We take it from there.",
+      "The AI is trained specifically on your business — your services, prices, hours, and approved scripts. Any complex or unusual query is instantly escalated to you via SMS or WhatsApp alert.",
   },
   {
-    question: "What platforms and tools do you integrate with?",
+    question: "Do you work with businesses outside the US?",
     answer:
-      "We integrate with virtually any platform with an API. Common integrations include Salesforce, HubSpot, Pipedrive, GoHighLevel, Zoho CRM, Zendesk, Intercom, Slack, Google Calendar, Calendly, Twilio, WhatsApp Business, and custom databases. If you use a tool, we can likely connect to it.",
+      "Yes — we actively serve clients across USA, Australia, UAE, and India. Our AI agents support multiple languages including Arabic and can be localised for any market.",
   },
   {
     question: "How much does it cost?",
     answer:
-      "Pricing depends on the complexity and scope of your project. Simple chatbot deployments start around $1,500 one-time. Full voice agent systems or multi-workflow automations typically range from $3,000–$10,000+. We also offer monthly retainer packages for ongoing optimization and support. Book a free discovery call for a custom quote.",
+      "Packages start from $499/month depending on call volume and features. Every engagement starts with a free 30-minute strategy call — no commitment required.",
   },
   {
-    question: "Can AI agents handle complex, multi-step workflows?",
+    question: "Will this replace my staff?",
     answer:
-      "Yes — this is actually where AI agents shine. We build agents capable of making decisions, routing tasks, pulling data from multiple sources, sending follow-ups, updating records, and escalating to humans when needed. We've built agents that manage entire sales follow-up sequences and customer onboarding flows end-to-end.",
+      "No — it handles the repetitive work (answering calls, booking appointments, sending reminders) so your team focuses on high-value tasks. Think of it as a 24/7 assistant that never calls in sick.",
   },
   {
-    question: "What industries do you work with?",
+    question: "What platforms do you integrate with?",
     answer:
-      "We work across industries including healthcare, real estate, e-commerce, SaaS, professional services, financial services, and hospitality. Our solutions are industry-agnostic — if you have repetitive workflows, inbound leads, or customer support volume, we can help regardless of your vertical.",
+      "GoHighLevel, HubSpot, Salesforce, Pipedrive, Jobber, ServiceTitan, Housecall Pro, Calendly, Twilio, and more. If you use something not listed, ask us — we can almost certainly connect to it.",
+  },
+  {
+    question: "Is there a contract or lock-in?",
+    answer:
+      "No long-term contracts. Month-to-month after the initial setup period. Cancel anytime with 30 days notice.",
+  },
+  {
+    question: "How do I know it's working?",
+    answer:
+      "You get a real-time dashboard showing every call answered, every appointment booked, every lead captured, and estimated revenue recovered. Full visibility, always.",
   },
 ];
 
-export default function FAQSection() {
+function FAQItem({
+  question,
+  answer,
+  isOpen,
+  onToggle,
+}: {
+  question: string;
+  answer: string;
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
   return (
-    <section className="py-20 lg:py-28">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div
+      style={{
+        border: "1px solid",
+        borderColor: isOpen ? "rgba(255,92,26,0.3)" : "rgba(255,255,255,0.08)",
+        borderRadius: 12,
+        background: isOpen ? "rgba(255,92,26,0.04)" : "rgba(255,255,255,0.02)",
+        overflow: "hidden",
+        transition: "border-color 0.2s ease, background 0.2s ease",
+      }}
+    >
+      <button
+        onClick={onToggle}
+        className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
+        style={{ cursor: "pointer" }}
+      >
+        <span
+          style={{
+            fontSize: 15,
+            fontWeight: 600,
+            color: isOpen ? "#fff" : "rgba(255,255,255,0.75)",
+            transition: "color 0.2s ease",
+          }}
+        >
+          {question}
+        </span>
+        <span
+          style={{
+            fontSize: 20,
+            fontWeight: 300,
+            color: isOpen ? "#FF5C1A" : "rgba(255,255,255,0.3)",
+            flexShrink: 0,
+            transition: "color 0.2s ease",
+            lineHeight: 1,
+          }}
+        >
+          {isOpen ? "−" : "+"}
+        </span>
+      </button>
+      <div
+        style={{
+          maxHeight: isOpen ? 400 : 0,
+          overflow: "hidden",
+          transition: "max-height 0.3s ease",
+        }}
+      >
+        <p
+          style={{
+            padding: "0 20px 16px",
+            fontSize: 14,
+            color: "rgba(255,255,255,0.45)",
+            lineHeight: 1.7,
+          }}
+        >
+          {answer}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+export default function FAQSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
+
+  return (
+    <section className="py-20 lg:py-28 bg-[#080b12]">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
-          <p className="text-primary text-sm font-semibold uppercase tracking-widest mb-3">
+          <p className="text-white/30 text-xs font-semibold uppercase tracking-[0.2em] mb-4">
             FAQ
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-white mb-4">
             Frequently Asked Questions
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-white/40 text-lg">
             Everything you need to know about working with Sri Saamba AI.
           </p>
         </div>
 
-        <Accordion className="space-y-3">
-          {faqs.map((faq, index) => (
-            <AccordionItem
-              key={index}
-              value={String(index)}
-              className="border border-border rounded-xl px-5 bg-card hover:border-primary/30 transition-colors data-open:border-primary/40 data-open:bg-primary/5 not-last:border-b-0"
-            >
-              <AccordionTrigger className="text-left text-sm font-semibold text-foreground hover:text-primary transition-colors hover:no-underline py-5">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-5">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
+        <div className="space-y-3">
+          {faqs.map((faq, i) => (
+            <FAQItem
+              key={i}
+              question={faq.question}
+              answer={faq.answer}
+              isOpen={openIndex === i}
+              onToggle={() => toggle(i)}
+            />
           ))}
-        </Accordion>
+        </div>
       </div>
     </section>
   );

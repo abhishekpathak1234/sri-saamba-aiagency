@@ -7,11 +7,17 @@ import { Menu, Zap } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const navLinks = [
+  { href: "/", label: "Home" },
   { href: "/services", label: "Solutions" },
-  { href: "/services#capabilities", label: "Capabilities" },
-  { href: "/case-studies", label: "Product" },
-  { href: "/about#industries", label: "Industries" },
+  { href: "/case-studies", label: "Case Studies" },
+  { href: "/contact", label: "Contact" },
 ];
+
+function openCalendly() {
+  (window as any).Calendly?.initPopupWidget({
+    url: "https://calendly.com/business-srisaamba/30min",
+  });
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -64,16 +70,16 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center">
-            <Link
-              href="/contact"
+            <button
+              onClick={openCalendly}
               className="inline-flex items-center justify-center px-5 py-2 rounded-full text-white text-sm font-semibold transition-all duration-300 hover:opacity-90 hover:scale-[1.02]"
               style={{
-                background: "linear-gradient(135deg, #7c3aed 0%, #4f46e5 50%, #2563eb 100%)",
-                boxShadow: "0 0 20px rgba(99,102,241,0.3)",
+                background: "linear-gradient(135deg, #FF5C1A 0%, #e04e16 100%)",
+                boxShadow: "0 0 20px rgba(255,92,26,0.3)",
               }}
             >
-              Book Free Consultation
-            </Link>
+              Book Free Demo
+            </button>
           </div>
 
           {/* Mobile */}
@@ -106,14 +112,13 @@ export default function Navbar() {
                 ))}
               </nav>
               <div className="px-4 pb-6">
-                <Link
-                  href="/contact"
-                  onClick={() => setOpen(false)}
+                <button
+                  onClick={() => { setOpen(false); openCalendly(); }}
                   className="flex items-center justify-center w-full py-2.5 rounded-full text-white text-sm font-semibold transition-all"
-                  style={{ background: "linear-gradient(135deg, #7c3aed 0%, #4f46e5 50%, #2563eb 100%)" }}
+                  style={{ background: "linear-gradient(135deg, #FF5C1A 0%, #e04e16 100%)" }}
                 >
-                  Book Free Consultation
-                </Link>
+                  Book Free Demo
+                </button>
               </div>
             </SheetContent>
           </Sheet>

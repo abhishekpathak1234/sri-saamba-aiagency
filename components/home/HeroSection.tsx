@@ -1,8 +1,14 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
+import Link from "next/link";
+
+function openCalendly() {
+  (window as any).Calendly?.initPopupWidget({
+    url: "https://calendly.com/business-srisaamba/30min",
+  });
+}
 
 export default function HeroSection() {
   return (
@@ -56,8 +62,8 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-lg sm:text-xl text-white/50 leading-relaxed max-w-xl mx-auto mb-10"
         >
-          AI Assistants. Smart Automation. Real Results — built for businesses
-          that want to grow without growing their team.
+          AI that answers your calls, books your appointments, and follows up
+          with every lead — 24/7, automatically, while you sleep.
         </motion.p>
 
         {/* CTAs */}
@@ -67,25 +73,25 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <Link
-            href="/contact"
+          <button
+            onClick={openCalendly}
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-white text-sm transition-all duration-300 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98]"
             style={{
               background:
-                "linear-gradient(135deg, #7c3aed 0%, #4f46e5 40%, #2563eb 100%)",
-              boxShadow: "0 0 30px rgba(99, 102, 241, 0.35)",
+                "linear-gradient(135deg, #FF5C1A 0%, #e04e16 100%)",
+              boxShadow: "0 0 30px rgba(255,92,26,0.35)",
             }}
           >
-            Book Free Consultation
+            Book Free Demo
             <ArrowRight className="w-4 h-4" />
-          </Link>
+          </button>
 
           <Link
             href="/case-studies"
             className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-semibold text-white/80 text-sm border border-white/10 bg-white/5 hover:bg-white/10 hover:text-white transition-all duration-300 backdrop-blur-sm"
           >
             <Play className="w-3.5 h-3.5 fill-current" />
-            Watch Demo
+            See Case Studies
           </Link>
         </motion.div>
       </div>

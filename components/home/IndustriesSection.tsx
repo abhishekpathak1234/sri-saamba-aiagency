@@ -4,65 +4,60 @@ import { motion } from "framer-motion";
 
 const industries = [
   {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-      </svg>
-    ),
-    name: "Automotive",
-    description: "AI agents that handle service booking, missed calls, and lead follow-up for dealerships and auto shops.",
-    tags: ["Service Scheduling", "Lead Recovery", "Call Answering"],
+    icon: "🏠",
+    name: "Roofing",
+    description:
+      "Never lose a storm lead again. AI answers every call 24/7, books inspection appointments automatically, and follows up — so no $15,000 job goes to your competitor.",
+    tags: ["24/7 Call Answering", "Inspection Booking", "Storm Lead Recovery"],
   },
   {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-      </svg>
-    ),
+    icon: "⚡",
+    name: "Home Services",
+    description:
+      "Emergency calls don't wait. AI handles inbound calls, qualifies the job, dispatches your team, and sends quote confirmations — even at 2am.",
+    tags: ["Speed-to-Lead", "Quote Automation", "Emergency Dispatch"],
+  },
+  {
+    icon: "💪",
+    name: "Gyms & Fitness",
+    description:
+      "Your front desk can't answer calls during classes. AI captures every membership enquiry, books free trials automatically, and follows up with no-shows — 24/7.",
+    tags: ["Membership Enquiries", "Trial Booking", "No-Show Follow-Up"],
+  },
+  {
+    icon: "☀️",
+    name: "Solar",
+    description:
+      "Solar leads go cold in under 60 minutes. AI calls every new lead within 20 seconds, qualifies roof type, ownership and bill size, and books the consultation — before they call your competitor.",
+    tags: ["Speed-to-Lead", "Lead Qualification", "Appointment Booking"],
+  },
+  {
+    icon: "🚗",
+    name: "Automotive",
+    description:
+      "Missed calls at a dealership or auto shop cost $380 per lost service appointment. AI answers every call, books test drives and service slots, and recovers after-hours leads automatically.",
+    tags: ["Service Scheduling", "Lead Recovery", "After-Hours Capture"],
+  },
+  {
+    icon: "🏡",
     name: "Real Estate",
-    description: "Qualify buyer and seller leads automatically, schedule viewings, and follow up with every enquiry.",
+    description:
+      "78% of buyers work with the first agent who responds. AI qualifies every inbound lead instantly, schedules viewings, and follows up automatically — so you're always first.",
     tags: ["Lead Qualification", "Viewing Scheduler", "CRM Sync"],
   },
   {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-      </svg>
-    ),
+    icon: "🏨",
+    name: "Hospitality",
+    description:
+      "Every missed reservation call is revenue lost to OTA commissions. AI handles bookings, after-hours enquiries, and guest follow-up for hotels and restaurants — in multiple languages.",
+    tags: ["Reservation Handling", "After-Hours Bookings", "Guest Follow-Up"],
+  },
+  {
+    icon: "🩺",
     name: "Healthcare",
-    description: "Appointment booking, reminders, patient intake and after-hours response — HIPAA-ready.",
-    tags: ["Appointment Booking", "Patient Intake", "Reminders"],
-  },
-  {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 14l9-5-9-5-9 5 9 5z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-      </svg>
-    ),
-    name: "Education",
-    description: "Enrolment support, FAQ automation, and student follow-up for training providers and tutoring businesses.",
-    tags: ["Enrolment Flows", "FAQ Agent", "Follow-Up"],
-  },
-  {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
-    ),
-    name: "Professional Services",
-    description: "Automate client onboarding, consultation booking, and invoice follow-up for law firms, accountants, and consultants.",
-    tags: ["Client Onboarding", "Consultation Booking", "Invoicing"],
-  },
-  {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-      </svg>
-    ),
-    name: "Retail",
-    description: "Product enquiries, order updates, loyalty campaigns, and 24/7 support — handled by AI without extra headcount.",
-    tags: ["Order Updates", "Customer Support", "Loyalty Campaigns"],
+    description:
+      "Clinics miss 25–40% of inbound calls during peak hours. AI books appointments, sends reminders, handles patient intake, and reduces no-shows — after hours included.",
+    tags: ["Appointment Booking", "Patient Intake", "No-Show Reminders"],
   },
 ];
 
@@ -122,7 +117,7 @@ export default function IndustriesSection() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {industries.map((ind, i) => (
             <motion.div
               key={ind.name}
@@ -139,7 +134,7 @@ export default function IndustriesSection() {
               {/* Icon */}
               <motion.div
                 variants={iconVariants}
-                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 text-white border"
+                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 text-2xl border"
               >
                 {ind.icon}
               </motion.div>

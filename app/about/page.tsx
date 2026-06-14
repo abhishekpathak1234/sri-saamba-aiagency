@@ -1,38 +1,7 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+"use client";
+
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight } from "lucide-react";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "About | Sri Saamba AI Agency",
-  description:
-    "Learn about Sri Saamba AI Agency — our mission, team, and values. We believe every business deserves the competitive advantage of AI.",
-};
-
-const team = [
-  {
-    name: "Arun Sharma",
-    role: "CEO & Co-Founder",
-    bio: "Former product lead at a Fortune 500 tech company. 10+ years building B2B software products. Passionate about making AI accessible to every business.",
-    initials: "AS",
-    color: "bg-blue-500",
-  },
-  {
-    name: "Priya Nair",
-    role: "CTO & Co-Founder",
-    bio: "AI/ML engineer with a background in NLP research. Previously built conversational AI systems at scale. Leads all technical architecture and model development.",
-    initials: "PN",
-    color: "bg-cyan-500",
-  },
-  {
-    name: "Rahul Verma",
-    role: "Head of AI",
-    bio: "Specializes in LLM fine-tuning, prompt engineering, and multi-agent system design. Has built AI solutions across healthcare, fintech, and e-commerce verticals.",
-    initials: "RV",
-    color: "bg-violet-500",
-  },
-];
+import IndustriesSection from "@/components/home/IndustriesSection";
 
 const values = [
   {
@@ -64,9 +33,22 @@ const values = [
 const stats = [
   { value: "2023", label: "Founded" },
   { value: "50+", label: "Clients Served" },
-  { value: "500+", label: "Automations Built" },
+  { value: "22", label: "Engineers" },
   { value: "4", label: "Countries" },
 ];
+
+const teamStats = [
+  { value: "22", label: "Engineers & AI specialists" },
+  { value: "4", label: "Countries served" },
+  { value: "50+", label: "AI agents deployed" },
+  { value: "< 7 days", label: "Average time to go live" },
+];
+
+function openCalendly() {
+  (window as any).Calendly?.initPopupWidget({
+    url: "https://calendly.com/business-srisaamba/30min",
+  });
+}
 
 export default function AboutPage() {
   return (
@@ -136,9 +118,9 @@ export default function AboutPage() {
                   systems, we build ones that actually move business metrics.
                 </p>
                 <p>
-                  Today we serve clients across e-commerce, healthcare,
-                  professional services, and B2B SaaS — helping them automate
-                  the work they hate so they can focus on the work that matters.
+                  Today we serve clients across roofing, HVAC, gyms, solar,
+                  automotive, real estate, and healthcare — helping them
+                  automate the work they hate so they can focus on what matters.
                 </p>
               </div>
             </div>
@@ -164,46 +146,53 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team */}
+      {/* Industries */}
+      <IndustriesSection />
+
+      {/* Built by Builders */}
       <section className="py-20 lg:py-24 bg-card/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
             <p className="text-primary text-sm font-semibold uppercase tracking-widest mb-3">
-              Meet the Team
+              The Team
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-              The People Behind the AI
+              Built by Builders
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              A small, focused team of AI engineers and business operators who
-              care deeply about the work we do and the clients we serve.
+              A founder-led AI agency backed by a 22-person engineering team —
+              deploying AI agents for trade and service businesses across USA,
+              Australia, UAE and India.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {team.map((member) => (
-              <Card
-                key={member.name}
-                className="bg-card border-border hover:border-primary/30 transition-all duration-300 text-center"
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+            {teamStats.map((s) => (
+              <div
+                key={s.label}
+                className="text-center p-6 rounded-2xl border border-border bg-card"
               >
-                <CardContent className="p-8">
-                  <div
-                    className={`w-20 h-20 rounded-full ${member.color} flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4`}
-                  >
-                    {member.initials}
-                  </div>
-                  <h3 className="text-lg font-bold text-foreground mb-1">
-                    {member.name}
-                  </h3>
-                  <p className="text-sm text-primary font-medium mb-3">
-                    {member.role}
-                  </p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {member.bio}
-                  </p>
-                </CardContent>
-              </Card>
+                <div className="text-3xl lg:text-4xl font-bold gradient-text mb-2">
+                  {s.value}
+                </div>
+                <div className="text-sm text-muted-foreground leading-snug">
+                  {s.label}
+                </div>
+              </div>
             ))}
+          </div>
+
+          <div className="text-center">
+            <button
+              onClick={openCalendly}
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-white text-sm transition-all duration-300 hover:opacity-90 hover:scale-[1.02]"
+              style={{
+                background: "linear-gradient(135deg, #FF5C1A 0%, #e04e16 100%)",
+                boxShadow: "0 0 30px rgba(255,92,26,0.3)",
+              }}
+            >
+              Ready to work with us? Book a free demo →
+            </button>
           </div>
         </div>
       </section>
@@ -219,11 +208,16 @@ export default function AboutPage() {
             Let&apos;s have a conversation about how AI can transform your
             specific business.
           </p>
-          <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 h-12">
-            <Link href="/contact" className="flex items-center gap-2">
-              Book Free Consultation <ArrowRight className="w-4 h-4" />
-            </Link>
-          </Button>
+          <button
+            onClick={openCalendly}
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-white text-sm transition-all duration-300 hover:opacity-90 hover:scale-[1.02]"
+            style={{
+              background: "linear-gradient(135deg, #FF5C1A 0%, #e04e16 100%)",
+              boxShadow: "0 0 30px rgba(255,92,26,0.3)",
+            }}
+          >
+            Book Free Demo
+          </button>
         </div>
       </section>
     </div>

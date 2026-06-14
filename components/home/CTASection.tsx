@@ -10,6 +10,12 @@ const trustBadges = [
   { icon: Clock, label: "No long-term contracts" },
 ];
 
+function openCalendly() {
+  (window as any).Calendly?.initPopupWidget({
+    url: "https://calendly.com/business-srisaamba/30min",
+  });
+}
+
 export default function CTASection() {
   return (
     <section className="py-20 lg:py-28 bg-[#080b12] relative overflow-hidden">
@@ -82,24 +88,24 @@ export default function CTASection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
         >
-          <Link
-            href="/contact"
+          <button
+            onClick={openCalendly}
             className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-semibold text-white text-sm transition-all duration-300 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98]"
             style={{
-              background: "linear-gradient(135deg, #7c3aed 0%, #4f46e5 40%, #2563eb 100%)",
-              boxShadow: "0 0 40px rgba(99,102,241,0.35), 0 4px 20px rgba(0,0,0,0.4)",
+              background: "linear-gradient(135deg, #FF5C1A 0%, #e04e16 100%)",
+              boxShadow: "0 0 40px rgba(255,92,26,0.35), 0 4px 20px rgba(0,0,0,0.4)",
             }}
           >
-            Book Free Consultation
+            Book Free Demo
             <ArrowRight className="w-4 h-4" />
-          </Link>
+          </button>
 
           <Link
             href="/case-studies"
             className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-semibold text-white/70 text-sm border border-white/10 bg-white/5 hover:bg-white/10 hover:text-white transition-all duration-300 backdrop-blur-sm"
           >
             <Play className="w-3.5 h-3.5 fill-current" />
-            Watch Demo
+            See Case Studies
           </Link>
         </motion.div>
 

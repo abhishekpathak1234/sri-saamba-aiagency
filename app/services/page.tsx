@@ -1,8 +1,7 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
+import CalendlyButton from "@/components/ui/CalendlyButton";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -187,11 +186,7 @@ export default function ServicesPage() {
             business impact. From voice to chat to full workflow automation, we
             build AI that works.
           </p>
-          <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 h-12">
-            <Link href="/contact" className="flex items-center gap-2">
-              Book Free Consultation <ArrowRight className="w-4 h-4" />
-            </Link>
-          </Button>
+          <CalendlyButton size="lg">Book Free Demo</CalendlyButton>
         </div>
       </section>
 
@@ -226,11 +221,7 @@ export default function ServicesPage() {
                     <p className="text-muted-foreground leading-relaxed mb-6">
                       {service.description}
                     </p>
-                    <Button asChild variant="outline" size="sm" className="border-primary/30 text-primary hover:bg-primary/10">
-                      <Link href="/contact" className="flex items-center gap-2">
-                        Book Free Consultation <ArrowRight className="w-3.5 h-3.5" />
-                      </Link>
-                    </Button>
+                    <CalendlyButton size="sm" variant="outline">Book Free Demo</CalendlyButton>
                   </div>
 
                   {/* Right */}
@@ -275,11 +266,7 @@ export default function ServicesPage() {
             Book a free 30-minute discovery call. We&apos;ll assess your needs
             and recommend the highest-ROI solution for your business.
           </p>
-          <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 h-12">
-            <Link href="/contact" className="flex items-center gap-2">
-              Book Free Consultation <ArrowRight className="w-4 h-4" />
-            </Link>
-          </Button>
+          <CalendlyButton size="lg">Book Free Demo</CalendlyButton>
         </div>
       </section>
     </div>
