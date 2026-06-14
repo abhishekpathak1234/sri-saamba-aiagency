@@ -388,45 +388,77 @@ function openCalendly() {
 function CTABanner() {
   return (
     <div
-      className="cap-cta-banner"
       style={{
-        background: "linear-gradient(135deg, #FF5C1A 0%, #ff8c5a 100%)",
+        position: "relative",
         borderRadius: 20,
-        padding: "48px 40px",
+        padding: "52px 48px",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
         marginTop: 40,
+        background: "#111218",
+        border: "1px solid rgba(255,255,255,0.07)",
+        overflow: "hidden",
+        gap: 40,
+        flexWrap: "wrap",
       }}
     >
-      <div style={{ flex: 1 }}>
-        <h3 style={{ fontSize: 28, fontWeight: 800, color: "white", margin: "0 0 10px" }}>
-          See it working in your business.
+      {/* Orange glow — bottom-right corner */}
+      <div style={{
+        position: "absolute",
+        bottom: -60,
+        right: -60,
+        width: 340,
+        height: 340,
+        borderRadius: "50%",
+        background: "radial-gradient(circle, rgba(255,92,26,0.28) 0%, transparent 70%)",
+        pointerEvents: "none",
+      }} />
+
+      {/* Left: headline + sub + trust badges */}
+      <div style={{ flex: 1, minWidth: 260, position: "relative", zIndex: 1 }}>
+        <h3 style={{ fontSize: "clamp(28px,4vw,40px)", fontWeight: 800, color: "white", margin: "0 0 12px", lineHeight: 1.15 }}>
+          See it working<br />
+          <span style={{ color: "#FF5C1A" }}>in your business.</span>
         </h3>
-        <p style={{ fontSize: 15, color: "rgba(255,255,255,0.75)", margin: 0, maxWidth: 480, lineHeight: 1.6 }}>
+        <p style={{ fontSize: 15, color: "rgba(255,255,255,0.5)", margin: "0 0 24px", maxWidth: 460, lineHeight: 1.7 }}>
           Book a free 10-minute demo. We'll show you exactly which of these workflows fits your business — and what it would recover in month one.
         </p>
+        <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
+          {["10 minutes", "No credit card", "Live walkthrough"].map(t => (
+            <span key={t} style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, color: "rgba(255,255,255,0.45)" }}>
+              <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#3DD68C", display: "inline-block", flexShrink: 0 }} />
+              {t}
+            </span>
+          ))}
+        </div>
       </div>
-      <div style={{ flexShrink: 0, marginLeft: 24, width: "100%", maxWidth: 200 }}>
+
+      {/* Right: button */}
+      <div style={{ flexShrink: 0, position: "relative", zIndex: 1 }}>
         <button
           onClick={openCalendly}
           style={{
-            background: "white",
-            color: "#FF5C1A",
+            background: "#FF5C1A",
+            color: "#1a0a00",
             fontWeight: 800,
-            fontSize: 15,
-            padding: "16px 32px",
-            borderRadius: 10,
+            fontSize: 16,
+            padding: "18px 36px",
+            borderRadius: 14,
             border: "none",
             cursor: "pointer",
-            boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
-            width: "100%",
-            transition: "transform 0.2s ease",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 10,
+            transition: "transform 0.2s ease, box-shadow 0.2s ease",
+            boxShadow: "0 0 32px rgba(255,92,26,0.35)",
+            whiteSpace: "nowrap",
           }}
-          onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.03)")}
-          onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+          onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.04)"; e.currentTarget.style.boxShadow = "0 0 48px rgba(255,92,26,0.5)"; }}
+          onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = "0 0 32px rgba(255,92,26,0.35)"; }}
         >
-          Book Free Demo →
+          Book Free Demo
+          <span style={{ width: 28, height: 28, borderRadius: "50%", background: "rgba(0,0,0,0.15)", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>→</span>
         </button>
       </div>
     </div>
