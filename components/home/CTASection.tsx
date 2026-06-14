@@ -96,7 +96,7 @@ export default function CTASection() {
               boxShadow: "0 0 40px rgba(255,92,26,0.35), 0 4px 20px rgba(0,0,0,0.4)",
             }}
           >
-            Book Free Demo
+            Book a Discovery Call
             <ArrowRight className="w-4 h-4" />
           </button>
 

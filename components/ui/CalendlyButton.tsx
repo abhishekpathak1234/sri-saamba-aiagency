@@ -11,7 +11,7 @@ interface CalendlyButtonProps {
 }
 
 export default function CalendlyButton({
-  children = "Book Free Demo",
+  children = "Book a Discovery Call",
   className = "",
   style,
   size = "default",

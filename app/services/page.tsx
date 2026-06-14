@@ -186,7 +186,7 @@ export default function ServicesPage() {
             business impact. From voice to chat to full workflow automation, we
             build AI that works.
           </p>
-          <CalendlyButton size="lg">Book Free Demo</CalendlyButton>
+          <CalendlyButton size="lg">Book a Discovery Call</CalendlyButton>
         </div>
       </section>
 
@@ -221,7 +221,7 @@ export default function ServicesPage() {
                     <p className="text-muted-foreground leading-relaxed mb-6">
                       {service.description}
                     </p>
-                    <CalendlyButton size="sm" variant="outline">Book Free Demo</CalendlyButton>
+                    <CalendlyButton size="sm" variant="outline">Book a Discovery Call</CalendlyButton>
                   </div>
 
                   {/* Right */}
@@ -266,7 +266,7 @@ export default function ServicesPage() {
             Book a free 30-minute discovery call. We&apos;ll assess your needs
             and recommend the highest-ROI solution for your business.
           </p>
-          <CalendlyButton size="lg">Book Free Demo</CalendlyButton>
+          <CalendlyButton size="lg">Book a Discovery Call</CalendlyButton>
         </div>
       </section>
     </div>

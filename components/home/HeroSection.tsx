@@ -82,7 +82,7 @@ export default function HeroSection() {
               boxShadow: "0 0 30px rgba(255,92,26,0.35)",
             }}
           >
-            Book Free Demo
+            Book a Discovery Call
             <ArrowRight className="w-4 h-4" />
           </button>
 

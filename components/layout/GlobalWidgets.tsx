@@ -9,7 +9,7 @@ export default function GlobalWidgets() {
       if (typeof window !== "undefined" && (window as any).Calendly) {
         (window as any).Calendly.initBadgeWidget({
           url: "https://calendly.com/business-srisaamba/30min",
-          text: "Book a Free Demo",
+          text: "Book a Discovery Call",
           color: "#FF5C1A",
           textColor: "#ffffff",
           branding: false,
@@ -38,7 +38,7 @@ export default function GlobalWidgets() {
           if ((window as any).Calendly) {
             (window as any).Calendly.initBadgeWidget({
               url: "https://calendly.com/business-srisaamba/30min",
-              text: "Book a Free Demo",
+              text: "Book a Discovery Call",
               color: "#FF5C1A",
               textColor: "#ffffff",
               branding: false,

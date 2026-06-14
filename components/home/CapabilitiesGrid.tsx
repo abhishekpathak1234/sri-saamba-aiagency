@@ -457,7 +457,7 @@ function CTABanner() {
           onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.04)"; e.currentTarget.style.boxShadow = "0 0 48px rgba(255,92,26,0.5)"; }}
           onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = "0 0 32px rgba(255,92,26,0.35)"; }}
         >
-          Book Free Demo
+          Book a Discovery Call
           <span style={{ width: 28, height: 28, borderRadius: "50%", background: "rgba(0,0,0,0.15)", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>→</span>
         </button>
       </div>

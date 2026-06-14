@@ -126,7 +126,7 @@ export default function PricingSection() {
                   boxShadow: "0 4px 20px rgba(255,92,26,0.3)",
                 }}
               >
-                Get a Custom Quote →
+                Book a Discovery Call →
               </button>
 
               <p

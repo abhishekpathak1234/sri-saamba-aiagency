@@ -78,7 +78,7 @@ export default function Navbar() {
                 boxShadow: "0 0 20px rgba(255,92,26,0.3)",
               }}
             >
-              Book Free Demo
+              Book a Discovery Call
             </button>
           </div>
 
@@ -117,7 +117,7 @@ export default function Navbar() {
                   className="flex items-center justify-center w-full py-2.5 rounded-full text-white text-sm font-semibold transition-all"
                   style={{ background: "linear-gradient(135deg, #FF5C1A 0%, #e04e16 100%)" }}
                 >
-                  Book Free Demo
+                  Book a Discovery Call
                 </button>
               </div>
             </SheetContent>

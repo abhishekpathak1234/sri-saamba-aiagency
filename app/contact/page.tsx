@@ -177,9 +177,13 @@ export default function ContactPage() {
             ))}
           </div>
 
-          <div className="flex items-center justify-center gap-2 mt-6 text-white/20 text-xs">
-            <MapPin className="w-3.5 h-3.5" />
-            Remote-first · Serving USA, Australia, UAE &amp; India
+          <div className="flex items-start justify-center gap-2 mt-6 text-white/20 text-xs text-center">
+            <MapPin className="w-3.5 h-3.5 mt-0.5 shrink-0" />
+            <span className="leading-relaxed">
+              SRI SAAMBA PARMESHWARA INDUSTRIES PRIVATE LIMITED<br />
+              SIERRA CARTEL 1207/343, 9th Main Rd, Sector-7, HSR Layout,<br />
+              Bangalore South, Bangalore- 560102, Karnataka
+            </span>
           </div>
         </div>
       </section>

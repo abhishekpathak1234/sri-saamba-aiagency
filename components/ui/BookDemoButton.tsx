@@ -10,7 +10,7 @@ interface BookDemoButtonProps {
 }
 
 export default function BookDemoButton({
-  children = "Book Free Demo",
+  children = "Book a Discovery Call",
   className = "",
   style,
   showArrow = true,

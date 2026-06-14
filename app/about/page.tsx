@@ -191,7 +191,7 @@ export default function AboutPage() {
                 boxShadow: "0 0 30px rgba(255,92,26,0.3)",
               }}
             >
-              Ready to work with us? Book a free demo →
+              Ready to work with us? Book a Discovery Call →
             </button>
           </div>
         </div>
@@ -216,7 +216,7 @@ export default function AboutPage() {
               boxShadow: "0 0 30px rgba(255,92,26,0.3)",
             }}
           >
-            Book Free Demo
+            Book a Discovery Call
           </button>
         </div>
       </section>

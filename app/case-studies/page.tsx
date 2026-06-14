@@ -274,7 +274,7 @@ export default function CaseStudiesPage() {
               boxShadow: "0 0 30px rgba(255,92,26,0.3)",
             }}
           >
-            Book Free Demo
+            Book a Discovery Call
           </button>
         </div>
       </section>
