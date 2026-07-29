@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { AlgoBrandLogoFooter } from "@/components/brand/AlgoBrandLogo";
 
 const services = [
   { label: "AI Voice & Chat Agents", href: "/services#voice-agents" },
@@ -76,17 +77,9 @@ export default function Footer() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             {/* Brand */}
             <div className="sm:col-span-2 lg:col-span-1">
-              <Link href="/" className="inline-flex items-center gap-2.5 mb-5">
-                <div
-                  className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold"
-                  style={{ background: "linear-gradient(135deg, #6B38C4 0%, #1A4FBB 100%)" }}
-                >
-                  S
-                </div>
-                <span className="text-base font-bold text-white">
-                  Sri Saamba <span style={{ color: "#8b5cf6" }}>AI</span>
-                </span>
-              </Link>
+              <div className="mb-5">
+                <AlgoBrandLogoFooter src="/algo-easy-logo.png" href="/" alt="Algo Easy" />
+              </div>
               <p className="text-white/35 text-sm leading-relaxed mb-6 max-w-xs">
                 Enterprise AI systems that answer calls, qualify leads, automate workflows, and drive measurable revenue — without adding headcount.
               </p>

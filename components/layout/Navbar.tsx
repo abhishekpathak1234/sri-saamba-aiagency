@@ -3,8 +3,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Zap } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { AlgoBrandLogoNav } from "@/components/brand/AlgoBrandLogo";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -39,17 +40,8 @@ export default function Navbar() {
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-[72px]">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="relative w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
-              <Zap className="w-4.5 h-4.5 text-white" fill="white" />
-            </div>
-            <span className="text-base font-semibold tracking-tight">
-              <span className="text-white">Sri Saamba</span>
-              <span className="text-blue-400"> AI</span>
-            </span>
-          </Link>
+        <div className="flex items-center justify-between h-16 lg:h-24">
+          <AlgoBrandLogoNav src="/algo-easy-logo.png" href="/" alt="Algo Easy" />
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-1">
@@ -91,13 +83,8 @@ export default function Navbar() {
               <Menu className="w-5 h-5" />
             </SheetTrigger>
             <SheetContent side="right" className="w-[280px] bg-[#0d1117] border-white/10 p-0">
-              <div className="flex items-center px-5 pt-5 pb-4 border-b border-white/10">
-                <Link href="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-blue-600 flex items-center justify-center">
-                    <Zap className="w-4 h-4 text-white" fill="white" />
-                  </div>
-                  <span className="text-sm font-semibold text-white">Sri Saamba <span className="text-blue-400">AI</span></span>
-                </Link>
+              <div className="flex items-center px-5 pt-5 pb-4 border-b border-white/10" onClick={() => setOpen(false)}>
+                <AlgoBrandLogoNav src="/algo-easy-logo.png" href="/" alt="Algo Easy" />
               </div>
               <nav className="flex flex-col gap-1 p-4">
                 {navLinks.map((link) => (
