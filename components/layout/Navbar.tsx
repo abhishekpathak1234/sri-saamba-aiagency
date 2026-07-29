@@ -41,23 +41,25 @@ export default function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-24">
-          <AlgoBrandLogoNav src="/algo-easy-logo.png" href="/" alt="Algo Easy" />
+          <div className="flex items-center lg:gap-8">
+            <AlgoBrandLogoNav src="/algo-easy-logo-v2.png" href="/" alt="Algo Easy" />
 
-          {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
-                  pathname === link.href
-                    ? "text-white"
-                    : "text-white/60 hover:text-white"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {/* Desktop Nav */}
+            <div className="hidden lg:flex items-center gap-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+                    pathname === link.href
+                      ? "text-white"
+                      : "text-white/60 hover:text-white"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* Desktop CTA */}
@@ -84,7 +86,7 @@ export default function Navbar() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[280px] bg-[#0d1117] border-white/10 p-0">
               <div className="flex items-center px-5 pt-5 pb-4 border-b border-white/10" onClick={() => setOpen(false)}>
-                <AlgoBrandLogoNav src="/algo-easy-logo.png" href="/" alt="Algo Easy" />
+                <AlgoBrandLogoNav src="/algo-easy-logo-v2.png" href="/" alt="Algo Easy" />
               </div>
               <nav className="flex flex-col gap-1 p-4">
                 {navLinks.map((link) => (

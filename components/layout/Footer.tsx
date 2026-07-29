@@ -78,7 +78,7 @@ export default function Footer() {
             {/* Brand */}
             <div className="sm:col-span-2 lg:col-span-1">
               <div className="mb-5">
-                <AlgoBrandLogoFooter src="/algo-easy-logo.png" href="/" alt="Algo Easy" />
+                <AlgoBrandLogoFooter src="/algo-easy-logo-v2.png" href="/" alt="Algo Easy" />
               </div>
               <p className="text-white/35 text-sm leading-relaxed mb-6 max-w-xs">
                 Enterprise AI systems that answer calls, qualify leads, automate workflows, and drive measurable revenue — without adding headcount.

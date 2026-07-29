@@ -2,18 +2,18 @@ import Link from "next/link";
 import Image from "next/image";
 
 /**
- * Algo Brand Logo System — shared across every Algo product.
- * Spec source: ALGO_DESIGN_SYSTEM.md in the algoai (ledger) repo, measured
- * from the live algobridge.cc navbar/footer. Accepts only the 3 inputs
- * every product provides; height/spacing/alignment are inherited.
+ * Algo Easy brand logo. NOTE: this product uses its own explicit sizing
+ * (requested directly), which deviates from the AlgoBridge master spec in
+ * ALGO_DESIGN_SYSTEM.md (88px/56px). That's an intentional, documented
+ * exception for this product, same in spirit as the Algo Auto exception --
+ * not a copy/paste of the master values.
  *
- * Height values match the master reference exactly:
- *   nav:    56px mobile / 88px desktop (h-14 / lg:h-[88px])
- *   footer: 56px all breakpoints (h-14)
+ * Header: 40px mobile / 48px tablet (sm) / 54px desktop (lg)
+ * Footer: 46px mobile / 54px tablet (sm) / 60px desktop (lg)
  *
  * Uses next/image (not a plain <img>) specifically because this app is
  * deployed with a Next.js `basePath` (see next.config.ts) so it can live
- * under algobridge.cc/easy-ai -- next/image auto-prefixes its src with
+ * under algobridge.cc/easyai -- next/image auto-prefixes its src with
  * basePath, a raw <img src> string would not and would 404.
  */
 type AlgoBrandLogoProps = {
@@ -22,11 +22,11 @@ type AlgoBrandLogoProps = {
   alt: string;
 };
 
-// Intrinsic dimensions of the source logo files (icon+wordmark lockups),
-// used only for Next's layout/aspect-ratio math -- CSS className controls
-// the actual rendered size.
-const INTRINSIC_WIDTH = 551;
-const INTRINSIC_HEIGHT = 174;
+// Intrinsic dimensions of the current logo file, used only for Next's
+// layout/aspect-ratio math -- CSS className controls the actual rendered
+// size, and width:auto preserves the exact aspect ratio at every height.
+const INTRINSIC_WIDTH = 552;
+const INTRINSIC_HEIGHT = 164;
 
 export function AlgoBrandLogoNav({ src, href, alt }: AlgoBrandLogoProps) {
   return (
@@ -37,7 +37,8 @@ export function AlgoBrandLogoNav({ src, href, alt }: AlgoBrandLogoProps) {
         width={INTRINSIC_WIDTH}
         height={INTRINSIC_HEIGHT}
         priority
-        className="h-14 lg:h-[88px] w-auto shrink-0 max-h-full object-contain"
+        quality={100}
+        className="h-10 sm:h-12 lg:h-[54px] w-auto shrink-0 max-h-full object-contain"
       />
     </Link>
   );
@@ -51,7 +52,8 @@ export function AlgoBrandLogoFooter({ src, href, alt }: AlgoBrandLogoProps) {
         alt={alt}
         width={INTRINSIC_WIDTH}
         height={INTRINSIC_HEIGHT}
-        className="h-14 w-auto shrink-0 max-h-full object-contain"
+        quality={100}
+        className="h-[46px] sm:h-[54px] lg:h-[60px] w-auto shrink-0 max-h-full object-contain"
       />
     </Link>
   );
