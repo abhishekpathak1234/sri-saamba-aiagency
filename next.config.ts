@@ -51,10 +51,10 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  // This branch/deployment only: mounts the app under /easy-ai so it can be
-  // reverse-proxied at algobridge.cc/easy-ai without breaking internal links.
+  // This branch/deployment only: mounts the app under /easyai so it can be
+  // reverse-proxied at algobridge.cc/easyai without breaking internal links.
   // The main branch (agency.srisaamba.com) does not have this set.
-  basePath: "/easy-ai",
+  basePath: "/easyai",
   async headers() {
     return [
       {
