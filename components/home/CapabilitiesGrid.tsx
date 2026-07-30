@@ -382,7 +382,7 @@ function CapabilitiesStrip() {
 // ─── Bottom CTA Banner ────────────────────────────────────────────────────────
 
 function openCalendly() {
-  (window as any).Calendly?.initPopupWidget({ url: "https://calendly.com/business-srisaamba/30min" });
+  (window as any).Calendly?.initPopupWidget({ url: "https://calendly.com/abhishek-algobridge/30min" });
 }
 
 function CTABanner() {

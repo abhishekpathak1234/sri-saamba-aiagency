@@ -50,11 +50,11 @@ export default function ContactPage() {
         <div className="mx-auto text-center" style={{ maxWidth: 800 }}>
           <p className="text-white/40 text-sm mb-1">Prefer to email us directly?</p>
           <a
-            href="mailto:business@srisaamba.com"
+            href="mailto:abhishek@algobridge.cc"
             className="inline-flex items-center gap-2 text-base font-medium transition-colors hover:opacity-80"
             style={{ color: "#FF5C1A" }}
           >
-            ✉ business@srisaamba.com
+            ✉ abhishek@algobridge.cc
           </a>
         </div>
       </section>
@@ -106,7 +106,7 @@ export default function ContactPage() {
             {/* Calendly inline widget */}
             <div
               className="calendly-inline-widget"
-              data-url="https://calendly.com/business-srisaamba/30min"
+              data-url="https://calendly.com/abhishek-algobridge/30min"
               style={{ minWidth: 320, height: 700 }}
             />
           </div>
@@ -131,8 +131,8 @@ export default function ContactPage() {
               {
                 icon: null,
                 title: "Direct line",
-                sub: "business@srisaamba.com",
-                href: "mailto:business@srisaamba.com",
+                sub: "abhishek@algobridge.cc",
+                href: "mailto:abhishek@algobridge.cc",
               },
             ].map(({ icon: Icon, title, sub, href }) => (
               <div

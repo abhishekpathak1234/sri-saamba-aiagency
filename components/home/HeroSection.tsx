@@ -6,7 +6,7 @@ import Link from "next/link";
 
 function openCalendly() {
   (window as any).Calendly?.initPopupWidget({
-    url: "https://calendly.com/business-srisaamba/30min",
+    url: "https://calendly.com/abhishek-algobridge/30min",
   });
 }
 

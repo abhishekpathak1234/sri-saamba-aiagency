@@ -8,7 +8,7 @@ export default function GlobalWidgets() {
     const initBadge = () => {
       if (typeof window !== "undefined" && (window as any).Calendly) {
         (window as any).Calendly.initBadgeWidget({
-          url: "https://calendly.com/business-srisaamba/30min",
+          url: "https://calendly.com/abhishek-algobridge/30min",
           text: "Book a Discovery Call",
           color: "#FF5C1A",
           textColor: "#ffffff",
@@ -37,7 +37,7 @@ export default function GlobalWidgets() {
         onLoad={() => {
           if ((window as any).Calendly) {
             (window as any).Calendly.initBadgeWidget({
-              url: "https://calendly.com/business-srisaamba/30min",
+              url: "https://calendly.com/abhishek-algobridge/30min",
               text: "Book a Discovery Call",
               color: "#FF5C1A",
               textColor: "#ffffff",

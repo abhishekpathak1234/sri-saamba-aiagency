@@ -19,7 +19,7 @@ export default function BookDemoButton({
     <button
       onClick={() => {
         (window as any).Calendly?.initPopupWidget({
-          url: "https://calendly.com/business-srisaamba/30min",
+          url: "https://calendly.com/abhishek-algobridge/30min",
         });
         return false;
       }}
