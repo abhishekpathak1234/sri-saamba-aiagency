@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu } from "lucide-react";
+import { ChevronDown, Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { AlgoBrandLogoNav } from "@/components/brand/AlgoBrandLogo";
 
@@ -13,6 +13,93 @@ const navLinks = [
   { href: "/case-studies", label: "Case Studies" },
   { href: "/contact", label: "Contact" },
 ];
+
+// Plain <img> with a hardcoded /easyai prefix -- next/image's basePath
+// handling doesn't reach the internal source fetch on this Next.js version
+// (confirmed: the optimizer 400s even on the existing brand logo), so we
+// bypass it here rather than ship broken cross-product icons.
+const siblingProducts = [
+  {
+    key: "auto",
+    label: "Algo Auto AI",
+    sub: "AI Employees for Dealerships",
+    href: "/auto",
+    icon: "/easyai/algo-auto-icon.png",
+    self: false,
+  },
+  {
+    key: "realty",
+    label: "Algo Realty AI",
+    sub: "AI Employees for Real Estate",
+    href: "/realty",
+    icon: "/easyai/algo-realty-icon.png",
+    self: false,
+  },
+  {
+    key: "easy",
+    label: "Algo Easy AI",
+    sub: "AI Automation Platform for Small Businesses",
+    href: "/",
+    icon: "/easyai/algo-easy-icon.png",
+    self: true,
+  },
+] as const;
+
+function ProductsMenu() {
+  return (
+    <div className="group relative">
+      <button
+        type="button"
+        className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-white/60 transition-colors hover:text-white"
+      >
+        Products
+        <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180" />
+      </button>
+      <div className="invisible absolute left-1/2 top-full z-[70] mt-3 w-72 -translate-x-1/2 opacity-0 transition group-hover:visible group-hover:opacity-100">
+        <div className="rounded-xl border border-white/10 bg-[#0d1117]/95 p-2 shadow-2xl backdrop-blur-xl">
+          {siblingProducts.map((p) => {
+            const row = (
+              <>
+                <img
+                  src={p.icon}
+                  alt={p.label}
+                  width={40}
+                  height={40}
+                  className="h-10 w-10 shrink-0 rounded-full object-cover"
+                />
+                <span className="min-w-0 flex-1">
+                  <span className="block text-sm font-semibold text-white">
+                    {p.self ? `✓ ${p.label}` : p.label}
+                  </span>
+                  <span className="mt-0.5 block text-xs text-white/40">
+                    {p.sub}
+                  </span>
+                </span>
+              </>
+            );
+            return p.self ? (
+              <Link
+                key={p.key}
+                href={p.href}
+                className="flex items-center gap-4 rounded-lg px-2 py-2.5 transition-colors hover:bg-white/5"
+              >
+                {row}
+              </Link>
+            ) : (
+              <a
+                key={p.key}
+                href={p.href}
+                className="flex items-center gap-4 rounded-lg px-2 py-2.5 transition-colors hover:bg-white/5"
+              >
+                {row}
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function openCalendly() {
   (window as any).Calendly?.initPopupWidget({
@@ -42,7 +129,11 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-24">
           <div className="flex items-center lg:gap-8">
-            <AlgoBrandLogoNav src="/algo-easy-logo-v2.png" href="/" alt="Algo Easy" />
+            <AlgoBrandLogoNav
+              src="/algo-easy-logo-v2.png"
+              href="/"
+              alt="Algo Easy"
+            />
 
             {/* Desktop Nav */}
             <div className="hidden lg:flex items-center gap-1">
@@ -59,6 +150,7 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
+              <ProductsMenu />
             </div>
           </div>
 
@@ -84,9 +176,19 @@ export default function Navbar() {
             >
               <Menu className="w-5 h-5" />
             </SheetTrigger>
-            <SheetContent side="right" className="w-[280px] bg-[#0d1117] border-white/10 p-0">
-              <div className="flex items-center px-5 pt-5 pb-4 border-b border-white/10" onClick={() => setOpen(false)}>
-                <AlgoBrandLogoNav src="/algo-easy-logo-v2.png" href="/" alt="Algo Easy" />
+            <SheetContent
+              side="right"
+              className="w-[280px] bg-[#0d1117] border-white/10 p-0"
+            >
+              <div
+                className="flex items-center px-5 pt-5 pb-4 border-b border-white/10"
+                onClick={() => setOpen(false)}
+              >
+                <AlgoBrandLogoNav
+                  src="/algo-easy-logo-v2.png"
+                  href="/"
+                  alt="Algo Easy"
+                />
               </div>
               <nav className="flex flex-col gap-1 p-4">
                 {navLinks.map((link) => (
@@ -100,11 +202,57 @@ export default function Navbar() {
                   </Link>
                 ))}
               </nav>
+              <div className="border-t border-white/10 p-4">
+                <div className="mb-1 px-1 text-xs font-semibold uppercase tracking-[0.15em] text-white/30">
+                  Products
+                </div>
+                {siblingProducts.map((p) => {
+                  const row = (
+                    <>
+                      <img
+                        src={p.icon}
+                        alt={p.label}
+                        width={40}
+                        height={40}
+                        className="h-10 w-10 shrink-0 rounded-full object-cover"
+                      />
+                      <span className="min-w-0 flex-1 text-sm text-white/70">
+                        {p.self ? `✓ ${p.label}` : p.label}
+                      </span>
+                    </>
+                  );
+                  return p.self ? (
+                    <Link
+                      key={p.key}
+                      href={p.href}
+                      onClick={() => setOpen(false)}
+                      className="flex items-center gap-4 rounded-lg px-3 py-2.5 transition-colors hover:bg-white/5"
+                    >
+                      {row}
+                    </Link>
+                  ) : (
+                    <a
+                      key={p.key}
+                      href={p.href}
+                      onClick={() => setOpen(false)}
+                      className="flex items-center gap-4 rounded-lg px-3 py-2.5 transition-colors hover:bg-white/5"
+                    >
+                      {row}
+                    </a>
+                  );
+                })}
+              </div>
               <div className="px-4 pb-6">
                 <button
-                  onClick={() => { setOpen(false); openCalendly(); }}
+                  onClick={() => {
+                    setOpen(false);
+                    openCalendly();
+                  }}
                   className="flex items-center justify-center w-full py-2.5 rounded-full text-white text-sm font-semibold transition-all"
-                  style={{ background: "linear-gradient(135deg, #FF5C1A 0%, #e04e16 100%)" }}
+                  style={{
+                    background:
+                      "linear-gradient(135deg, #FF5C1A 0%, #e04e16 100%)",
+                  }}
                 >
                   Book a Discovery Call
                 </button>
