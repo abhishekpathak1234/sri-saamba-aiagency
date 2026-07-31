@@ -50,7 +50,7 @@ function ProductsMenu() {
     <div className="group relative">
       <button
         type="button"
-        className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-white/60 transition-colors hover:text-white"
+        className="flex cursor-pointer items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium text-white/60 transition-all duration-200 hover:text-white"
       >
         Products
         <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180" />
@@ -68,8 +68,14 @@ function ProductsMenu() {
                   className="h-10 w-10 shrink-0 rounded-full object-cover"
                 />
                 <span className="min-w-0 flex-1">
-                  <span className="block text-sm font-semibold text-white">
-                    {p.self ? `✓ ${p.label}` : p.label}
+                  <span className="flex items-center gap-1.5 text-sm font-semibold text-white">
+                    {p.self && (
+                      <span
+                        aria-hidden
+                        className="h-1.5 w-1.5 shrink-0 rounded-full bg-white/60"
+                      />
+                    )}
+                    {p.label}
                   </span>
                   <span className="mt-0.5 block text-xs text-white/40">
                     {p.sub}
@@ -77,20 +83,13 @@ function ProductsMenu() {
                 </span>
               </>
             );
+            const rowClass = `flex cursor-pointer items-center gap-4 rounded-lg px-2 py-2.5 transition-colors hover:bg-white/5${p.self ? " bg-white/5" : ""}`;
             return p.self ? (
-              <Link
-                key={p.key}
-                href={p.href}
-                className="flex items-center gap-4 rounded-lg px-2 py-2.5 transition-colors hover:bg-white/5"
-              >
+              <Link key={p.key} href={p.href} className={rowClass}>
                 {row}
               </Link>
             ) : (
-              <a
-                key={p.key}
-                href={p.href}
-                className="flex items-center gap-4 rounded-lg px-2 py-2.5 transition-colors hover:bg-white/5"
-              >
+              <a key={p.key} href={p.href} className={rowClass}>
                 {row}
               </a>
             );
@@ -158,7 +157,7 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center">
             <button
               onClick={openCalendly}
-              className="inline-flex items-center justify-center px-5 py-2 rounded-full text-white text-sm font-semibold transition-all duration-300 hover:opacity-90 hover:scale-[1.02]"
+              className="inline-flex cursor-pointer items-center justify-center px-5 py-2 rounded-full text-white text-sm font-semibold transition-all duration-300 hover:opacity-90 hover:scale-[1.02]"
               style={{
                 background: "linear-gradient(135deg, #FF5C1A 0%, #e04e16 100%)",
                 boxShadow: "0 0 20px rgba(255,92,26,0.3)",
@@ -171,7 +170,7 @@ export default function Navbar() {
           {/* Mobile */}
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
-              className="lg:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+              className="lg:hidden inline-flex cursor-pointer items-center justify-center w-9 h-9 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors"
               aria-label="Open menu"
             >
               <Menu className="w-5 h-5" />
@@ -216,17 +215,24 @@ export default function Navbar() {
                         height={40}
                         className="h-10 w-10 shrink-0 rounded-full object-cover"
                       />
-                      <span className="min-w-0 flex-1 text-sm text-white/70">
-                        {p.self ? `✓ ${p.label}` : p.label}
+                      <span className="flex min-w-0 flex-1 items-center gap-1.5 text-sm text-white/70">
+                        {p.self && (
+                          <span
+                            aria-hidden
+                            className="h-1.5 w-1.5 shrink-0 rounded-full bg-white/60"
+                          />
+                        )}
+                        {p.label}
                       </span>
                     </>
                   );
+                  const rowClass = `flex cursor-pointer items-center gap-4 rounded-lg px-3 py-2.5 transition-colors hover:bg-white/5${p.self ? " bg-white/5" : ""}`;
                   return p.self ? (
                     <Link
                       key={p.key}
                       href={p.href}
                       onClick={() => setOpen(false)}
-                      className="flex items-center gap-4 rounded-lg px-3 py-2.5 transition-colors hover:bg-white/5"
+                      className={rowClass}
                     >
                       {row}
                     </Link>
@@ -235,7 +241,7 @@ export default function Navbar() {
                       key={p.key}
                       href={p.href}
                       onClick={() => setOpen(false)}
-                      className="flex items-center gap-4 rounded-lg px-3 py-2.5 transition-colors hover:bg-white/5"
+                      className={rowClass}
                     >
                       {row}
                     </a>
@@ -248,7 +254,7 @@ export default function Navbar() {
                     setOpen(false);
                     openCalendly();
                   }}
-                  className="flex items-center justify-center w-full py-2.5 rounded-full text-white text-sm font-semibold transition-all"
+                  className="flex cursor-pointer items-center justify-center w-full py-2.5 rounded-full text-white text-sm font-semibold transition-all"
                   style={{
                     background:
                       "linear-gradient(135deg, #FF5C1A 0%, #e04e16 100%)",

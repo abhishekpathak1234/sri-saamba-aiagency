@@ -1,9 +1,21 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Script from "next/script";
 
 export default function GlobalWidgets() {
+  const [hideWhatsapp, setHideWhatsapp] = useState(false);
+
+  useEffect(() => {
+    const footer = document.querySelector("footer");
+    if (!footer || !("IntersectionObserver" in window)) return;
+    const observer = new IntersectionObserver(([entry]) =>
+      setHideWhatsapp(entry.isIntersecting),
+    );
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
+
   useEffect(() => {
     const initBadge = () => {
       if (typeof window !== "undefined" && (window as any).Calendly) {
@@ -77,6 +89,9 @@ export default function GlobalWidgets() {
           alignItems: "center",
           justifyContent: "center",
           boxShadow: "0 4px 12px rgba(37,211,102,0.4)",
+          opacity: hideWhatsapp ? 0 : 1,
+          pointerEvents: hideWhatsapp ? "none" : "auto",
+          transition: "opacity 0.2s ease",
         }}
       >
         {/* Online pulse dot */}

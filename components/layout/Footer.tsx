@@ -71,7 +71,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
     <div className="border-b border-white/6 last:border-0">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between gap-4 py-4 text-left text-white/60 hover:text-white/80 text-sm font-medium transition-colors"
+        className="w-full flex cursor-pointer items-center justify-between gap-4 py-4 text-left text-white/60 hover:text-white/80 text-sm font-medium transition-colors"
       >
         {q}
         <ChevronDown
@@ -191,33 +191,43 @@ export default function Footer() {
               <h4 className="text-xs font-semibold text-white/30 mb-5 uppercase tracking-[0.15em]">
                 Products
               </h4>
-              <ul className="space-y-3">
-                {siblingProducts.map((p) => (
-                  <li key={p.key} className="flex items-center gap-3">
-                    <img
-                      src={p.icon}
-                      alt={p.label}
-                      width={24}
-                      height={24}
-                      className="h-5 w-5 lg:h-6 lg:w-6 shrink-0 rounded-full object-cover"
-                    />
-                    {p.self ? (
-                      <Link
-                        href={p.href}
-                        className="text-sm text-white/70 hover:text-white/90 transition-colors"
-                      >
-                        ✓ {p.label}
-                      </Link>
-                    ) : (
-                      <a
-                        href={p.href}
-                        className="text-sm text-white/40 hover:text-white/70 transition-colors"
-                      >
+              <ul className="space-y-1">
+                {siblingProducts.map((p) => {
+                  const row = (
+                    <>
+                      <img
+                        src={p.icon}
+                        alt={p.label}
+                        width={24}
+                        height={24}
+                        className="h-5 w-5 lg:h-6 lg:w-6 shrink-0 rounded-full object-cover"
+                      />
+                      <span className="flex items-center gap-1.5">
+                        {p.self && (
+                          <span
+                            aria-hidden
+                            className="h-1.5 w-1.5 shrink-0 rounded-full bg-white/50"
+                          />
+                        )}
                         {p.label}
-                      </a>
-                    )}
-                  </li>
-                ))}
+                      </span>
+                    </>
+                  );
+                  const rowClass = `-ml-1.5 flex cursor-pointer items-center gap-2.5 rounded-lg px-1.5 py-1 text-sm transition-colors hover:bg-white/5${p.self ? " bg-white/5 text-white/90" : " text-white/40 hover:text-white/70"}`;
+                  return (
+                    <li key={p.key}>
+                      {p.self ? (
+                        <Link href={p.href} className={rowClass}>
+                          {row}
+                        </Link>
+                      ) : (
+                        <a href={p.href} className={rowClass}>
+                          {row}
+                        </a>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 
