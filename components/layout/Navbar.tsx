@@ -150,6 +150,12 @@ export default function Navbar() {
                 </Link>
               ))}
               <ProductsMenu />
+              <a
+                href="https://algobridge.cc/partner"
+                className="px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 text-white/60 hover:text-white"
+              >
+                Partner
+              </a>
             </div>
           </div>
 
@@ -247,6 +253,15 @@ export default function Navbar() {
                     </a>
                   );
                 })}
+              </div>
+              <div className="px-4 pt-1 pb-2">
+                <a
+                  href="https://algobridge.cc/partner"
+                  onClick={() => setOpen(false)}
+                  className="block px-4 py-3 text-sm font-medium text-white/60 hover:text-white rounded-lg hover:bg-white/5 transition-colors"
+                >
+                  Partner
+                </a>
               </div>
               <div className="px-4 pb-6">
                 <button

@@ -230,6 +230,14 @@ export default function Footer() {
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <a
+                    href="https://algobridge.cc/partner"
+                    className="text-sm text-white/40 hover:text-white/70 transition-colors"
+                  >
+                    Partner
+                  </a>
+                </li>
               </ul>
             </div>
 
