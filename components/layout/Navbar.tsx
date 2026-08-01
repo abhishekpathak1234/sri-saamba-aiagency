@@ -65,7 +65,7 @@ function ProductsMenu() {
                   alt={p.label}
                   width={40}
                   height={40}
-                  className="h-10 w-10 shrink-0 rounded-full object-cover"
+                  className="h-10 w-10 shrink-0 rounded-full object-contain"
                 />
                 <span className="min-w-0 flex-1">
                   <span className="flex items-center gap-1.5 text-sm font-semibold text-white">
@@ -213,7 +213,7 @@ export default function Navbar() {
                         alt={p.label}
                         width={40}
                         height={40}
-                        className="h-10 w-10 shrink-0 rounded-full object-cover"
+                        className="h-10 w-10 shrink-0 rounded-full object-contain"
                       />
                       <span className="flex min-w-0 flex-1 items-center gap-1.5 text-sm text-white/70">
                         {p.self && (

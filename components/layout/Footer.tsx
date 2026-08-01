@@ -247,7 +247,7 @@ export default function Footer() {
                         alt={p.label}
                         width={24}
                         height={24}
-                        className="h-5 w-5 lg:h-6 lg:w-6 shrink-0 rounded-full object-cover"
+                        className="h-6 w-6 shrink-0 rounded-full object-contain"
                       />
                       <span className="flex items-center gap-1.5">
                         {p.self && (
