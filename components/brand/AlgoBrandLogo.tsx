@@ -29,7 +29,7 @@ const INTRINSIC_WIDTH = 552;
 const INTRINSIC_HEIGHT = 164;
 
 function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  window.scrollTo(0, 0);
 }
 
 export function AlgoBrandLogoNav({ src, href, alt }: AlgoBrandLogoProps) {
