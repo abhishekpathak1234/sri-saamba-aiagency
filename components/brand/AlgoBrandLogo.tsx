@@ -28,9 +28,13 @@ type AlgoBrandLogoProps = {
 const INTRINSIC_WIDTH = 552;
 const INTRINSIC_HEIGHT = 164;
 
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
 export function AlgoBrandLogoNav({ src, href, alt }: AlgoBrandLogoProps) {
   return (
-    <Link href={href} className="flex items-center shrink-0">
+    <Link href={href} onClick={scrollToTop} className="flex items-center shrink-0">
       <Image
         src={src}
         alt={alt}
@@ -46,7 +50,7 @@ export function AlgoBrandLogoNav({ src, href, alt }: AlgoBrandLogoProps) {
 
 export function AlgoBrandLogoFooter({ src, href, alt }: AlgoBrandLogoProps) {
   return (
-    <Link href={href} className="inline-flex items-center shrink-0">
+    <Link href={href} onClick={scrollToTop} className="inline-flex items-center shrink-0">
       <Image
         src={src}
         alt={alt}
